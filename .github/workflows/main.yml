@@ -28,7 +28,7 @@ jobs:
         env:
           # Membuka kunci blokir MLflow untuk penyimpanan lokal folder
           MLFLOW_ALLOW_FILE_STORE: "true"
-          MLFLOW_TRACKING_URI: "file://$(pwd)/mlruns"
+          MLFLOW_TRACKING_URI: "file://${{ github.workspace }}/mlruns"
 
       # TAMBAHKAN LANGKAH INI AGAR FOLDER 'model' TERSEDIA
       - name: Prepare artifacts for upload
