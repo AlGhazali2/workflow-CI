@@ -24,7 +24,7 @@ jobs:
         run: echo "MLFLOW_TRACKING_URI=file://$(pwd)/mlruns" >> $GITHUB_ENV
 
       - name: Run mlflow project
-        run: mlflow run ./MLProject --env-manager local
+        run: mlflow run ./Workflow-CI --env-manager local
 
       # TAMBAHKAN LANGKAH INI AGAR FOLDER 'model' TERSEDIA
       - name: Prepare artifacts for upload
