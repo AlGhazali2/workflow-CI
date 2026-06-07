@@ -21,7 +21,7 @@ jobs:
         run: pip install mlflow scikit-learn pandas
 
       - name: Set MLflow Tracking URI
-        run: echo "MLFLOW_TRACKING_URI=file://$(pwd)/mlruns" >> $GITHUB_ENV
+        run: echo "MLFLOW_TRACKING_URI=file://${{ github.workspace }}/mlruns" >> $GITHUB_ENV
 
       - name: Run mlflow project
         run: mlflow run ./Workflow-CI --env-manager local
