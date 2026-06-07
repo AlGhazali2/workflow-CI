@@ -8,8 +8,8 @@ import os
 tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000/")
 mlflow.set_tracking_uri(tracking_uri)
 
-# 2. Mengatur eksperimen
-mlflow.set_experiment("Latihan_Diabetes_Prediction_nontuning_workflow")
+if not os.getenv("MLFLOW_EXPERIMENT_ID"):
+    mlflow.set_experiment("Latihan_Diabetes_Prediction_nontuning")
 
 # 3. Perbaikan Path:
 # Jangan pakai path absolut (C:\Users\...). Gunakan path relatif.
