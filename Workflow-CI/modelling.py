@@ -5,9 +5,6 @@ from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import os
 
-# 1. Perbaikan Tracking URI: 
-# Gunakan Environment Variable agar fleksibel (bisa lokal, bisa CI)
-# Jika tidak ada env var, gunakan default (localhost)
 tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000/")
 mlflow.set_tracking_uri(tracking_uri)
 
