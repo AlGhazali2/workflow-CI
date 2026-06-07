@@ -44,8 +44,8 @@ jobs:
         with:
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
           folderId: ${{ secrets.GDRIVE_FOLDER_ID }}
-          files: 'model/*'
-
+          filename: 'model/'
+          
       - name: Post Set up Python 3.12.7
         run: echo "Cleanup Python steps completed"
 
