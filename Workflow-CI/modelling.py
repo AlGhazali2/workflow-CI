@@ -3,12 +3,23 @@ import mlflow.sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
-mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+import os
 
-# 2. Mengatur nama eksperimen agar rapi di dashboard
-mlflow.set_experiment("Latihan_Diabetes_Prediction_nontuning") 
-# Load data hasil preprocessing
-df = pd.read_csv(r'C:\Users\achma\Downloads\ujian3\preprocessing\diabetes_preprocessing.csv')
+# 1. Perbaikan Tracking URI: 
+# Gunakan Environment Variable agar fleksibel (bisa lokal, bisa CI)
+# Jika tidak ada env var, gunakan default (localhost)
+tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000/")
+mlflow.set_tracking_uri(tracking_uri)
+
+# 2. Mengatur eksperimen
+mlflow.set_experiment("Latihan_Diabetes_Prediction_nontuning_workflow")
+
+# 3. Perbaikan Path:
+# Jangan pakai path absolut (C:\Users\...). Gunakan path relatif.
+# Pastikan file CSV berada di folder yang sama atau subfolder proyek.
+data_path = 'diabetes_preprocessing.csv' 
+df = pd.read_csv(data_path)
+
 X = df.drop('Outcome', axis=1)
 y = df['Outcome']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
